@@ -7,12 +7,17 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
 <link rel="stylesheet" href="css/app.css">
 
-<body>
+<body data-ng-init="getUsers()">
     <div ng-controller="usersCtrl" class="container mt-5 text-center">
+
         <h1>Don`t give up!</h1>
+
         <div class="mt-5">
+
             <button class="btn btn-primary mb-5" value="seeTxt">{{textBtn}}</button>
-            <table class="mr-auto ml-auto table" ng-show="showMe">
+            <input type="text" ng-model="search" />
+            <ng-include src="'table.html'"></ng-include>
+            <!-- <table class="mr-auto ml-auto table" ng-show="showMe">
                 <thead class="thead-dark">
                     <th ng-click="orderDesc('name')">Name ❤ </th>
                     <th ng-click="orderDesc('lastName')">Last Name ❤</th>
@@ -20,7 +25,7 @@
                     <th ng-click="orderDesc('roles')">Roles ❤</th>
                     <th>Options ❤</th>
                 </thead>
-                <tr ng-repeat="user in users">
+                <tr ng-repeat="user in users|filter:search">
                     <td>
                         {{ user.name }}</td>
                     <td>
@@ -29,41 +34,43 @@
                         {{ user.age }}</td>
                     <td>
 
-                        <span ng-repeat="role in user.roles">{{role}}</span></td>
-                    <td class="text-center">
-                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" title="View user" class="btn  btn-sm  btn-outline-success"><i class="fas  fa-eye"></i></button>
-                        <button type="button" ng-click="editBtn(user)" title="Edit user" class="btn btn-sm btn-outline-primary"><i class="fas fa-user-edit"></i></button>
-                        <button type="button" ng-click="deleteUser(user)" title="Delete user" class="btn   btn-sm  btn-outline-danger "><i class="fas fa-trash-alt"></i></button>
+                        <span ng-repeat="role in user.roles">{{role}}</span>
+                    </td>
+                    <td class=" text-center ">
+                        <button type="button " data-toggle="modal " data-target="#exampleModalCenter " title="View user " class="btn btn-sm btn-outline-success "><i
+                                class="fas fa-eye "></i></button>
+                        <button type="button " ng-click="editBtn(user) " title="Edit user " class="btn btn-sm btn-outline-primary "><i class="fas fa-user-edit "></i></button>
+                        <button type="button " ng-click="deleteUser(user) " title="Delete user " class="btn btn-sm btn-outline-danger "><i class="fas fa-trash-alt "></i></button>
                     </td>
                 </tr>
-            </table>
+            </table> -->
 
         </div>
         <form>
-            <button ng-click="saveUser()" class="btn btn-secondary" type="submit">Submit form</button>
+            <button ng-click="saveUser() " class="btn btn-secondary " type="submit ">Submit form</button>
 
-            <div class="form-row">
-                <input type="hidden" ng-model="user.id">
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer01">First name</label>
-                    <input type="text" ng-model="user.name" class="form-control is-valid" id="validationServer01" placeholder="First name" required>
-
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer02">Last name</label>
-                    <input type="text" ng-model="user.lastName" class="form-control is-valid" id="validationServer02" placeholder="Last name" required>
+            <div class="form-row ">
+                <input type="hidden " ng-model="user.id ">
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer01 ">First name</label>
+                    <input type="text " ng-model="user.name " class="form-control is-valid " id="validationServer01 " placeholder="First name " required>
 
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer03">Age</label>
-                    <input type="number" ng-model="user.age" class="form-control is-valid" id="validationServer03" placeholder="Age" required>
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer02 ">Last name</label>
+                    <input type="text " ng-model="user.lastName " class="form-control is-valid " id="validationServer02 " placeholder="Last name " required>
 
                 </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer04">Role</label>
-                    <select type="text" ng-model="user.roles" class="form-control " id="validationServer04" placeholder="Last name" required>
-                        <option value="admin">Admin</option>
-                        <option value="standard">Standard</option>
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer03 ">Age</label>
+                    <input type="number " ng-model="user.age " class="form-control is-valid " id="validationServer03 " placeholder="Age " required>
+
+                </div>
+                <div class="col-md-4 mb-3 ">
+                    <label for="validationServer04 ">Role</label>
+                    <select type="text " ng-model="user.roles " class="form-control " id="validationServer04 " placeholder="Last name " required>
+                        <option value="admin ">Admin</option>
+                        <option value="standard ">Standard</option>
 
                 </div>
 
@@ -79,13 +86,19 @@
 
 
 
-    
 
 
-    <script src="js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="js/app.js "></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous ">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous ">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous ">
+    </script>
 </body>
 
 </html>
