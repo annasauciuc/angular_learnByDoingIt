@@ -1,0 +1,67 @@
+<section class="container mt-5 text-center">
+    <h1>
+        Don`t give up!</h1>
+
+    <!-- <section class="mt-5 "> -->
+
+    <!-- <button class="btn btn-primary mb-5" value="seeTxt">{{textBtn}}</button> -->
+
+
+    <form class="mt-5" ng-submit="saveUser() ">
+
+
+        <div class="form-row ">
+            <input type="hidden" ng-model="user.id ">
+            <div class="col-md-4 mb-3 ">
+                <label for="validationServer01 ">First name</label>
+                <input type="text " ng-model="user.name " class="form-control" placeholder="First name" required>
+
+            </div>
+            <div class="col-md-4 mb-3 ">
+                <label for="validationServer02 ">Last name</label>
+                <input type="text " ng-model="user.lastName " class="form-control" placeholder="Last name" required>
+
+            </div>
+            <div class="col-md-4 mb-3 ">
+                <label for="validationServer03 ">Age</label>
+                <input type="number " ng-model="user.age " class="form-control" placeholder="Age" required>
+
+            </div>
+            <div class="col-md-4 mb-3 ">
+                <label for="validationServer04 ">Role</label>
+                <select multiple class="form-control" id="exampleFormControlSelect2" type="text" ng-model="user.roles " placeholder="role" required>
+                        <option value="admin">Admin</option>
+                        <option value="standard">Standard</option>
+                    </select>
+
+            </div>
+
+
+        </div>
+        <button class="btn btn-danger" type="submit">Submit form</button>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <p ng-model="user.nameModal">{{user.name}}</p>
+                    <p ng-model="user.lastNameModal">{{user.lastName}}</p>
+                    <p ng-model="user.ageModal">{{user.age}}</p>
+                    <p ng-model="user.rolesModal">{{user.roles}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Modal -->
+</section>

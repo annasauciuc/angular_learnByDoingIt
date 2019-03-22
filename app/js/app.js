@@ -1,11 +1,32 @@
-const app = angular.module("myApp", []);
+const app = angular.module("myApp",["ngRoute"]);
+app.config([
+  "$routeProvider",
+  function($routeProvider) {
+    $routeProvider
+      .when("/home", {
+        templateUrl: "views/home.html"
+      })
+      .when("/directory", {
+        templateUrl: "views/directory.html",
+        controller: "usersCtrl"
+      })   .when("/table", {
+        templateUrl: "views/table.html",
+        controller: "usersCtrl"
+      })
+      .otherwise({
+        redirectTo: "/home"
+      });
+  }
+]);
+
+
 app.controller("usersCtrl", [
   "$scope",
   "$http",
   ($scope, $http) => {
     $scope.getUsers = () => {
       const url = "http://localhost:3000/users";
-      $http.get(url).then(function(response) {
+      $http.get(url).then(response => {
         $scope.users = response.data;
       });
     };
@@ -18,18 +39,22 @@ app.controller("usersCtrl", [
     $scope.user.lastName = "";
     $scope.user.age = "";
     $scope.user.roles = [];
-    $scope.toogleShowHide = function() {
+    $scope.toogleShowHide = () => {
       $scope.showMe = !$scope.showMe;
-      $scope.showMe
-        ? ($scope.textBtn = "Hide me")
-        : ($scope.textBtn = "Show me");
+      $scope.showMe;
+
+      // ? ($scope.textBtn = "Hide me")
+      // : ($scope.textBtn = "Show me");
     };
-    $scope.editBtn = user => {
+    $scope.initialUser = user => {
       $scope.user.id = user._id;
       $scope.user.name = user.name;
       $scope.user.lastName = user.lastName;
       $scope.user.age = user.age;
-      $scope.user.roles = user.roles;
+      $scope.user.roles = user.roles.toString();
+    };
+    $scope.editBtn = user => {
+      $scope.initialUser(user);
     };
     $scope.cleanInputs = () => {
       $scope.user.name = "";
@@ -63,13 +88,26 @@ app.controller("usersCtrl", [
         .then(response => console.log("response :", response))
         .then(response => $scope.getUsers())
         .catch(error => console.log("error :", error));
+      $scope.cleanInputs();
     };
     $scope.deleteUser = user => {
+      // const userIndex = $scope.users.indexOf(user);
+      // $scope.users.splice(userIndex, 1);
+
       $http
         .delete(`http://localhost:3000/users/${user._id}`)
         .then(response => $scope.getUsers())
         .then(response => console.log("response :", response));
     };
-    $scope.previewUser = user => {};
+    $scope.previewUser = user => {
+   //  $scope.userModal.id = user._id;
+      $scope.user.name = user.name;
+      $scope.user.lastName = user.lastName;
+      $scope.user.age = user.age;
+      $scope.user.roles = user.roles;
+
+
+     // $scope.initialUser(user);
+    };
   }
 ]);
