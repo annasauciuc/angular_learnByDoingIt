@@ -32,14 +32,21 @@ app.controller("usersCtrl", [
       $scope.user.roles = user.roles;
     };
     $scope.cleanInputs = () => {
-      $scope.user;
+      $scope.user.name = "";
+      $scope.user.lastName = "";
+      $scope.user.age = "";
+      $scope.user.roles = [];
     };
     $scope.saveUser = () => {
       let method = "post";
       let url = "http://localhost:3000/users";
-      if ($scope.user.id.length > 0) {
+      if ($scope.user.id) {
+        console.log("$scope.user.id :", $scope.user.id);
         method = "put";
         url = `http://localhost:3000/users/${$scope.user.id}`;
+      } else {
+        method = "post";
+        url = "http://localhost:3000/users";
       }
 
       const headers = {
