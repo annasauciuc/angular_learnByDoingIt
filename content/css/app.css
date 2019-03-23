@@ -53,3 +53,48 @@ th {
 #menu-bar a {
     color: #fff
 }
+
+.content {
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+/* Animations */
+
+
+/* The starting CSS styles for the enter animation */
+
+main.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+
+/* The finishing CSS styles for the enter animation */
+
+main.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+#usersTable tr.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+    transform: translateY(30px)
+}
+
+#usersTable tr.ng-enter.ng-enter-active {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+#usersTable tr.ng-leave {
+    transition: 0.7s linear all;
+    opacity: 1;
+    transform: translateX()
+}
+
+#usersTable tr.ng-leave.ng-leave-active {
+    opacity: 0s;
+    transform: translateX(-100%)
+}

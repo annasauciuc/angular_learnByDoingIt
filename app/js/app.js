@@ -1,10 +1,11 @@
-const app = angular.module("myApp", ["ngRoute"]);
+const app = angular.module("myApp", ["ngRoute","ngAnimate"]);
 app.config([
   "$routeProvider",
   function($routeProvider) {
     $routeProvider
       .when("/home", {
-        templateUrl: "views/home.html"
+        templateUrl: "views/home.html",
+        controller: "usersCtrl"
       })
       .when("/directory", {
         templateUrl: "views/directory.html",
@@ -17,6 +18,21 @@ app.config([
       .otherwise({
         redirectTo: "/home"
       });
+  }
+]);
+app.directive("randomUser", [
+  function() {
+    return {
+      restrict: "E",
+      scope: {
+        users: "=",
+        title: "="
+      },
+      templateUrl: "views/random.html"
+      // controller: function($scope) {
+      //   $scope.random=Math.floor(Math.random()*4)
+      // }
+    };
   }
 ]);
 
@@ -92,13 +108,13 @@ app.controller("usersCtrl", [
       $scope.cleanInputs();
     };
     $scope.deleteUser = user => {
-      // const userIndex = $scope.users.indexOf(user);
-      // $scope.users.splice(userIndex, 1);
+      const userIndex = $scope.users.indexOf(user);
+      $scope.users.splice(userIndex, 1);
 
-      $http
-        .delete(`http://localhost:3000/users/${user._id}`)
-        .then(response => $scope.getUsers())
-        .then(response => console.log("response :", response));
+      // $http
+      //   .delete(`http://localhost:3000/users/${user._id}`)
+      //   .then(response => $scope.getUsers())
+      //   .then(response => console.log("response :", response));
     };
     $scope.previewUser = user => {
       //  $scope.userModal.id = user._id;
