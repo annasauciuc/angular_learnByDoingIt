@@ -1,4 +1,4 @@
-<section class="container mt-5 text-center">
+<section class="container mt-5 ">
     <h1>
         Don`t give up!</h1>
 
@@ -28,11 +28,13 @@
 
             </div>
             <div class="col-md-4 mb-3 ">
-                <label for="validationServer04 ">Role</label>
+                <label for="validationServer04 ">  <h5>Roles : {{user.roles.toString()}}</h5></label>
                 <select multiple class="form-control" id="exampleFormControlSelect2" type="text" ng-model="user.roles " placeholder="role" required>
-                        <option value="admin">Admin</option>
-                        <option value="standard">Standard</option>
-                    </select>
+                    <option value="admin">Admin</option>
+                    <option value="standard">Standard</option>
+                  
+                </select>
+
 
             </div>
 
@@ -47,8 +49,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p ng-model="user.nameModal">{{user.name}}</p>

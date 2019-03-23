@@ -7,7 +7,7 @@ app.config([
         templateUrl: "views/home.html",
       //  controller: "usersCtrl"
       })
-      .when("/form", {
+      .when("/form/:id", {
         templateUrl: "views/form.html",
         controller: "formCtrl"
       })
