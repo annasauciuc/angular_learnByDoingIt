@@ -1,4 +1,4 @@
-const app = angular.module("myApp",["ngRoute"]);
+const app = angular.module("myApp", ["ngRoute"]);
 app.config([
   "$routeProvider",
   function($routeProvider) {
@@ -9,7 +9,8 @@ app.config([
       .when("/directory", {
         templateUrl: "views/directory.html",
         controller: "usersCtrl"
-      })   .when("/table", {
+      })
+      .when("/table", {
         templateUrl: "views/table.html",
         controller: "usersCtrl"
       })
@@ -19,12 +20,12 @@ app.config([
   }
 ]);
 
-
 app.controller("usersCtrl", [
   "$scope",
   "$http",
-  ($scope, $http) => {
+  function($scope, $http) {
     $scope.getUsers = () => {
+      console.log("getUsrs??");
       const url = "http://localhost:3000/users";
       $http.get(url).then(response => {
         $scope.users = response.data;
@@ -100,14 +101,13 @@ app.controller("usersCtrl", [
         .then(response => console.log("response :", response));
     };
     $scope.previewUser = user => {
-   //  $scope.userModal.id = user._id;
+      //  $scope.userModal.id = user._id;
       $scope.user.name = user.name;
       $scope.user.lastName = user.lastName;
       $scope.user.age = user.age;
       $scope.user.roles = user.roles;
 
-
-     // $scope.initialUser(user);
+      // $scope.initialUser(user);
     };
   }
 ]);
