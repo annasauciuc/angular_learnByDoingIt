@@ -1,6 +1,6 @@
 <section class="container content">
     <input type="text" class="form-control w-50 mr-auto ml-auto mt-5 mb-5 search" placeholder="Search" ng-model="search" />
-    <table id="usersTable" class="mr-auto ml-auto table" ng-show="showMe">
+    <table id="usersTable" class="mr-auto ml-auto table">
         <thead class="thead-dark">
             <th ng-click="order='name'">Name ❤ </th>
             <th ng-click="order='lastName'">Last Name ❤</th>
@@ -21,7 +21,7 @@
             </td>
             <td class=" text-center ">
                 <button type="button " ng-click="previewUser(user)" data-toggle="modal" data-target="#exampleModal" title="View user" class="btn btn-sm btn-outline-success "><i class="fas fa-eye "></i></button>
-                <button type="button " ng-click="editBtn(user)" title="Edit user" class="btn btn-sm btn-outline-primary"><i
+                <button type="button " ng-click="editBtnForm(user)" title="Edit user" class="btn btn-sm btn-outline-primary"><i
                     class="fas fa-user-edit "></i></button>
                 <button type="button " ng-click="deleteUser(user)" title="Delete user " class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt "></i></button>
             </td>
