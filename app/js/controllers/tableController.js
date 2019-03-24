@@ -12,11 +12,18 @@ app.controller("tableCtrl", [
     };
 
     $scope.getUsers();
+
     $scope.previewUser = user => {
-      $scope.user.name = user.name;
-      $scope.user.lastName = user.lastName;
-      $scope.user.age = user.age;
-      $scope.user.roles = user.roles;
+      userService.get(user._id).then(data => {
+        console.log("data", data);
+        console.log("user", user);
+
+        console.log("$scope.user", user);
+        $scope.user.name = data.name;
+        $scope.user.lastName = data.lastName;
+        $scope.user.age = data.age;
+        $scope.user.roles = data.roles;
+      });
     };
     $scope.deleteUser = user => {
       // const userIndex = $scope.users.indexOf(user);

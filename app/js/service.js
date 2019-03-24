@@ -3,14 +3,21 @@ angular.module("myApp").factory("userService", [
   "$location",
   function($http, $location) {
     return {
+      //   data: {
+      //     id: "",
+      //     name: "",
+      //     lastName: "",
+      //     age: "",
+      //     roles: []
+      //   },
       getAllUsers: function() {
         console.log("getUsers???");
         return $http.get("http://localhost:3000/users").then(response => {
           return response.data;
         });
       },
-      get: function(id) {        
-        return $http.get(`http://localhost:3000/users/${user.id}`).then(response => {
+      get: function(id) {
+        return $http.get(`http://localhost:3000/users/${id}`).then(response => {
           return response.data[0];
         });
       },
