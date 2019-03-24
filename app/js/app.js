@@ -5,7 +5,7 @@ app.config([
     $routeProvider
       .when("/home", {
         templateUrl: "views/home.html",
-      //  controller: "usersCtrl"
+        controller: "tableCtrl"
       })
       .when("/form/:id", {
         templateUrl: "views/form.html",
@@ -15,9 +15,9 @@ app.config([
         templateUrl: "views/table.html",
         controller: "tableCtrl"
       })
-      // .otherwise({
-      //   redirectTo: "/home"
-      // });
+      .otherwise({
+        redirectTo: "/home"
+      });
   }
 ]);
 app.directive("randomUser", [

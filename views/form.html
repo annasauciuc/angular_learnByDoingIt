@@ -13,7 +13,7 @@
         <div class="form-row">
             <input type="hidden" ng-model="user.id">
             <div class="col-md-4 mb-3">
-                <label>First name</label>
+                <label>First name</label> <span class="required" ng-class="{'valid':userForm.name.$valid}">*</span>
                 <input type="text" name="name" ng-model="user.name" ng-required="true" class="form-control" placeholder="First name" />
 
                 <div ng-show="userForm.name.$touched && userForm.name.$invalid">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label>Last name</label>
+                <label>Last name</label> <span class="required" ng-class="{'valid':userForm.lastName.$valid}">*</span>
                 <input type="text" name="lastName" ng-model="user.lastName" ng-required="true" class="form-control" placeholder="Last name">
                 <div ng-show="userForm.lastName.$touched && userForm.lastName.$invalid">
                     <small style="color:red; display:block; text-align: center;">Enter a valid last name</small>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label>Age</label>
+                <label>Age</label> <span class="required" ng-class="{'valid':userForm.age.$valid}">*</span>
                 <input type="number" name="age" ng-model="user.age" ng-required="true" class="form-control" placeholder="Age" />
                 <div ng-show="userForm.age.$touched && userForm.age.$invalid">
                     <small style="color:red; display:block; text-align: center;">Enter a valid age</small>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label>
-                    <h5>Roles : {{user.roles.toString()}}</h5>
+                    <h5>Roles <span class="required" ng-class="{'valid':userForm.roles.$valid}">*</span>  {{user.roles}}</h5>
                 </label>
                 <select multiple class="form-control" name="roles" ng-required="true" id="exampleFormControlSelect2" type="text" ng-model="user.roles " placeholder="role">
                     <option value="admin">Admin</option>
@@ -58,28 +58,5 @@
         </div>
         <button class="btn btn-danger submit" value="Send" ng-disabled="userForm.$invalid" type="submit">Send</button>
     </form>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p ng-model="user.name">{{user.name}}</p>
-                    <p ng-model="user.lastName">{{user.lastName}}</p>
-                    <p ng-model="user.age">{{user.age}}</p>
-                    <p ng-model="user.roles">{{user.roles}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End Modal -->
+
 </section>

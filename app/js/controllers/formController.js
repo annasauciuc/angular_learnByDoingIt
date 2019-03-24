@@ -2,13 +2,17 @@ app.controller("formCtrl", [
   "$scope",
   "$routeParams",
   "userService",
-  function($scope, $routeParams, userService) {
+  "$location",
+  function($scope, $routeParams, userService, $location) {
     let id = $routeParams.id;
+    $scope.user={};
     if (id.length > 1) {
       userService.get(id).then(response => {
+        console.log('$scope.user :', $scope.user);
+        console.log('response :', response);
         $scope.user = response;
       });
-    } 
+    }
     $scope.getUsers = () => {
       userService.getAllUsers().then(response => ($scope.users = response));
     };
@@ -28,7 +32,6 @@ app.controller("formCtrl", [
 
     $scope.saveUser = () => {
       if ($scope.user.id) {
-
         userService
           .save($scope.user)
           .then(response => console.log("response :", response));
@@ -38,5 +41,6 @@ app.controller("formCtrl", [
           .then(response => console.log("response :", response));
       }
     };
+   
   }
 ]);
