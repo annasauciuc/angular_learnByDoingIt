@@ -1,5 +1,5 @@
 <section class="container mt-5 ">
-    <h1>
+    <h1 ng-show="simpleHeader()">
         Don`t give up!</h1>
 
     <!-- <section class="mt-5 "> -->
@@ -13,41 +13,42 @@
         <div class="form-row">
             <input type="hidden" ng-model="user.id">
             <div class="col-md-4 mb-3">
-                <label>First name</label> <span class="required" ng-class="{'valid':userForm.name.$valid}">*</span>
-                <input type="text" name="name" ng-model="user.name" ng-required="true" class="form-control" placeholder="First name" />
+                <label ng-show="simpleHeader()>First name</label> <span class=" required " ng-class="{ 'valid':userForm.name.$valid} ">*</span>
+                <input type="text " name="name " ng-model="user.name " ng-required="true " class="form-control " placeholder="First name " />
 
-                <div ng-show="userForm.name.$touched && userForm.name.$invalid">
-                    <small style="color:red; display:block; text-align: center;">Enter a valid name</small>
-
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label>Last name</label> <span class="required" ng-class="{'valid':userForm.lastName.$valid}">*</span>
-                <input type="text" name="lastName" ng-model="user.lastName" ng-required="true" class="form-control" placeholder="Last name">
-                <div ng-show="userForm.lastName.$touched && userForm.lastName.$invalid">
-                    <small style="color:red; display:block; text-align: center;">Enter a valid last name</small>
+                <div ng-show="userForm.name.$touched && userForm.name.$invalid ">
+                    <small style="color:red; display:block; text-align: center; ">Enter a valid name</small>
 
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <label>Age</label> <span class="required" ng-class="{'valid':userForm.age.$valid}">*</span>
-                <input type="number" name="age" ng-model="user.age" ng-required="true" class="form-control" placeholder="Age" />
-                <div ng-show="userForm.age.$touched && userForm.age.$invalid">
-                    <small style="color:red; display:block; text-align: center;">Enter a valid age</small>
+            <div class="col-md-4 mb-3 ">
+                <label>Last name</label> <span class="required " ng-class="{ 'valid':userForm.lastName.$valid} ">*</span>
+                <input type="text " name="lastName " ng-model="user.lastName " ng-required="true " class="form-control " placeholder="Last name ">
+                <div ng-show="userForm.lastName.$touched && userForm.lastName.$invalid ">
+                    <small style="color:red; display:block; text-align: center; ">Enter a valid last name</small>
 
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3 ">
+                <label>Age</label> <span class="required " ng-class="{ 'valid':userForm.age.$valid} ">*</span>
+                <input type="number " name="age " ng-model="user.age " ng-required="true " class="form-control " placeholder="Age " />
+                <div ng-show="userForm.age.$touched && userForm.age.$invalid ">
+                    <small style="color:red; display:block; text-align: center; ">Enter a valid age</small>
+
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 ">
                 <label>
-                    <h5>Roles <span class="required" ng-class="{'valid':userForm.roles.$valid}">*</span>  {{user.roles}}</h5>
+                    <h5>Roles <span class="required " ng-class="{ 'valid':userForm.roles.$valid} ">*</span> {{user.roles}}
+                    </h5>
                 </label>
-                <select multiple class="form-control" name="roles" ng-required="true" id="exampleFormControlSelect2" type="text" ng-model="user.roles " placeholder="role">
-                    <option value="admin">Admin</option>
-                    <option value="standard">Standard</option>
+                <select multiple class="form-control " name="roles " ng-required="true " id="exampleFormControlSelect2 " type="text " ng-model="user.roles " placeholder="role ">
+                    <option value="admin ">Admin</option>
+                    <option value="standard ">Standard</option>
 
                 </select>
-                <div ng-show="userForm.roles.$touched && userForm.roles.$invalid">
-                    <small style="color:red; display:block; text-align: center;">Enter a valid role</small>
+                <div ng-show="userForm.roles.$touched && userForm.roles.$invalid ">
+                    <small style="color:red; display:block; text-align: center; ">Enter a valid role</small>
 
                 </div>
 
@@ -56,7 +57,7 @@
 
 
         </div>
-        <button class="btn btn-danger submit" value="Send" ng-disabled="userForm.$invalid" type="submit">Send</button>
+        <button class="btn btn-danger submit " value="Send " ng-disabled="userForm.$invalid " type="submit ">Send</button>
     </form>
 
 </section>

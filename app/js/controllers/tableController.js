@@ -26,5 +26,6 @@ app.controller("tableCtrl", [
       console.log("form? :");
       $location.path("form/0"); // path not hash
     };
+
   }
 ]);
